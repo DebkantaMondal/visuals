@@ -1,0 +1,43 @@
+.mainCard {
+    width: 96%;
+    margin-bottom: 1.6rem;
+    margin-top: 4.5rem;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 20rem;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.mainCardPhoto {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 15px 15px;
+    z-index: 0;
+}
+
+/*.mainCardPhoto:hover {
+    transform: scale(1.13);
+    border: 1px solid #fff;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}*/
+
+.titleWrapper {
+    position: relative;
+    margin-top: 40%;
+    
+}
+
+.mainCardTitle {
+    text-shadow: 0 0 3px #040416, 0 0 5px #2939e6;
+    position: relative;
+    z-index: 15;
+    color: #fff;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.mainCardTitle:hover {
+    transform: scale(1.04);
+}
