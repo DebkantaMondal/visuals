@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { HashRouter } from 'react-router-dom';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    {window.navigator.onLine === true ? (<App />) : (<div>Offline</div>)}
+    {window.navigator.onLine === true ? (<HashRouter><App /></HashRouter>) : (<div>Offline</div>)}
   </React.StrictMode>,
   document.getElementById('root')
 );
