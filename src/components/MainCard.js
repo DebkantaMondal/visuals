@@ -5,11 +5,11 @@ import Card from 'react-bootstrap/Card';
 
 import Carousell from './Carousell';
 
-export default function MainCard(props) {
+export default function MainCard({ features, data }) {
 
     return (<div>
         <Card className="mainCard" >
-            <Carousell baseMedia={props.baseMedia} />
+            <Carousell features={features} data={data} />
         {/*<Card.Img variant="top" src={image1} className="mainCardPhoto" />
             <Card.Body>
                 <div className="titleWrapper"></div>

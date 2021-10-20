@@ -8,15 +8,18 @@ import {
   Route
 } from "react-router-dom";
 import Home from './components/Home';
-//import About from './components/About';
+import About from './components/About';
 import Topbar from './components/Topbar';
 //import Bottomnav from './components/Bottomnav';
 import Single from './components/Single';
-//import Faq from './components/Faq';
+import Faq from './components/Faq';
 //import Carousell from './components/Carousell';
 import Pagination from './components/Pagination';
 import Footer from './components/Footer';
-import MainCard from './components/MainCard';
+//import MainCard from './components/MainCard';
+//import Dev from './components/Dev';
+import Register from './components/viewer/Register';
+import Login from './components/viewer/Login';
 
 
 function App() {
@@ -52,12 +55,13 @@ function App() {
 
   return (
     <div className="App">
-    
+
       <Router>
         <Topbar />
+        {/*<Dev />*/}
         <Switch>
           <Route path="/visuals" exact>
-            <MainCard baseMedia={BaseMedia} />
+            {/*<MainCard baseMedia={BaseMedia} />*/}
             <Home posts={currentPosts} mediaLink={BaseMedia} no={noOfBlog} />
             <Pagination
               postsPerPage={postsPerPage}
@@ -65,14 +69,21 @@ function App() {
               paginate={paginate}
             />
           </Route>
-          {/*<Route path="/about">
+          <Route path="/visuals/about">
             <About />
-  </Route>
-          <Route path="/faq">
+          </Route>
+          <Route path="/visuals/faq">
             <Faq />
-      </Route>*/}
+          </Route>
           <Route path="/visuals/blog/:id">
             <Single />
+          </Route>
+
+          <Route path="/visuals/viewer/register">
+            <Register />
+          </Route>
+          <Route path="/visuals/viewer/login">
+            <Login />
           </Route>
 
         </Switch>

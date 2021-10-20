@@ -68,6 +68,18 @@ function Topbar() {
                         <Nav className="me-auto">
                             <span style={{ color: color }}><Link to="/visuals" className="link"><b>HOME</b></Link></span>
                         </Nav>
+                        <Nav className="me-auto">
+                            <span style={{ color: color }}><Link to="/visuals/about" className="link"><b>ABOUT</b></Link></span>
+                        </Nav>
+                        <Nav className="me-auto">
+                            <span style={{ color: color }}><Link to="/visuals/faq" className="link"><b>FAQs</b></Link></span>
+                        </Nav>
+                        <Nav className="me-auto">
+                            <span style={{ color: color }}><Link to="/visuals/viewer/login" className="link"><b>LOGIN</b></Link></span>
+                        </Nav>
+                        <Nav className="me-auto">
+                            <span style={{ color: color }}><Link to="/visuals/viewer/register" className="link"><b>SIGN UP</b></Link></span>
+                        </Nav>
 
                         {/*<Form className="d-flex" onSubmit={handleSearch}>
                             <FormControl

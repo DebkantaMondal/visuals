@@ -2,7 +2,7 @@
 
 function About(){
     return (
-        <div>About</div>
+        <div style={{marginTop: "4.4rem"}}>About</div>
     );
 }
 
