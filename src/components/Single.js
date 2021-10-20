@@ -34,7 +34,9 @@ function Single() {
 
     const path = useLocation();
 
-    const base = "https://debkantamondal.me";
+    const base = "https://debkantamondal.me/visuals/#";
+
+    console.log(base+path.pathname)
 
     const { id } = useParams();
 

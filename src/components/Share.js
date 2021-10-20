@@ -25,7 +25,7 @@ function Share() {
 
     const path = useLocation();
 
-    const base = "https://debkantamondal.me";
+    const base = "https://debkantamondal.me/visuals/#";
 
     
 
