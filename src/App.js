@@ -3,9 +3,10 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
-  BrowserRouter as Router,
+  /*BrowserRouter as Router,*/
   Switch,
-  Route
+  Route,
+  HashRouter
 } from "react-router-dom";
 import Home from './components/Home';
 import About from './components/About';
@@ -56,11 +57,11 @@ function App() {
   return (
     <div className="App">
 
-      <Router>
+      <HashRouter basename="/visuals">
         <Topbar />
         {/*<Dev />*/}
         <Switch>
-          <Route path="/visuals" exact>
+          <Route path="/" exact>
             {/*<MainCard baseMedia={BaseMedia} />*/}
             <Home posts={currentPosts} mediaLink={BaseMedia} no={noOfBlog} />
             <Pagination
@@ -69,25 +70,25 @@ function App() {
               paginate={paginate}
             />
           </Route>
-          <Route path="/visuals/about">
+          <Route path="/about">
             <About />
           </Route>
-          <Route path="/visuals/faq">
+          <Route path="/faq">
             <Faq />
           </Route>
-          <Route path="/visuals/blog/:id/show" exact>
+          <Route path="/blog/:id/show" exact>
             <Single />
           </Route>
 
-          <Route path="/visuals/viewer/register">
+          <Route path="/viewer/register">
             <Register />
           </Route>
-          <Route path="/visuals/viewer/login">
+          <Route path="/viewer/login">
             <Login />
           </Route>
 
         </Switch>
-      </Router>
+      </HashRouter>
       <Footer />
     </div>
   );

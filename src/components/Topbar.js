@@ -66,19 +66,19 @@ function Topbar() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <span style={{ color: color }}><Link to="/visuals" className="link"><b>HOME</b></Link></span>
+                            <span style={{ color: color }}><Link to="/" className="link"><b>HOME</b></Link></span>
                         </Nav>
                         <Nav className="me-auto">
-                            <span style={{ color: color }}><Link to="/visuals/about" className="link"><b>ABOUT</b></Link></span>
+                            <span style={{ color: color }}><Link to="/about" className="link"><b>ABOUT</b></Link></span>
                         </Nav>
                         <Nav className="me-auto">
-                            <span style={{ color: color }}><Link to="/visuals/faq" className="link"><b>FAQs</b></Link></span>
+                            <span style={{ color: color }}><Link to="/faq" className="link"><b>FAQs</b></Link></span>
                         </Nav>
                         <Nav className="me-auto">
-                            <span style={{ color: color }}><Link to="/visuals/viewer/login" className="link"><b>LOGIN</b></Link></span>
+                            <span style={{ color: color }}><Link to="/viewer/login" className="link"><b>LOGIN</b></Link></span>
                         </Nav>
                         <Nav className="me-auto">
-                            <span style={{ color: color }}><Link to="/visuals/viewer/register" className="link"><b>SIGN UP</b></Link></span>
+                            <span style={{ color: color }}><Link to="/viewer/register" className="link"><b>SIGN UP</b></Link></span>
                         </Nav>
 
                         {/*<Form className="d-flex" onSubmit={handleSearch}>
