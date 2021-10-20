@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="App">
 
-      <HashRouter basename="/visuals">
+      <HashRouter basename="/">
         <Topbar />
         {/*<Dev />*/}
         <Switch>
