@@ -75,7 +75,7 @@ function App() {
           <Route path="/visuals/faq">
             <Faq />
           </Route>
-          <Route path="/visuals/blog/:id">
+          <Route path="/visuals/blog/:id/show" exact>
             <Single />
           </Route>
 

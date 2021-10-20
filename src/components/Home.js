@@ -41,13 +41,13 @@ function Home(props) {
                                 <div className="movie_card" id="bright" key={key}>
                                     <div className="info_section">
                                         <div className="movie_header">
-                                            <Link to={"/visuals/blog/" + posts[val]._id} style={{ textDecoration: "none" }}><img className="locandina" src={baseMedia + posts[val].photo} alt="blog-post" /></Link>
-                                            <Link to={"/visuals/blog/" + posts[val]._id} style={{ textDecoration: "none" }}><h3>{posts[val].title}</h3></Link>
+                                            <Link to={"/visuals/blog/" + posts[val]._id+"/show"} style={{ textDecoration: "none" }}><img className="locandina" src={baseMedia + posts[val].photo} alt="blog-post" /></Link>
+                                            <Link to={"/visuals/blog/" + posts[val]._id+"/show"} style={{ textDecoration: "none" }}><h3>{posts[val].title}</h3></Link>
                                             <h5>{'( ' + new Date(posts[val].updatedAt).toLocaleDateString() + ' )'}</h5>
                                             <span className="minutes">{posts[val].desc.split(" ").length === 0 ? 'calculating...' : posts[val].desc.split(" ").length + " words"}</span>
                                             <p className="type">Photo Appreciation</p>
                                         </div>
-                                        <Link to={"/visuals/blog/" + posts[val]._id} style={{ textDecoration: "none" }}><div className="movie_desc">
+                                        <Link to={"/visuals/blog/" + posts[val]._id+"/show"} style={{ textDecoration: "none" }}><div className="movie_desc">
                                             <p className="text">
                                                 {posts[val].desc}
                                             </p>
