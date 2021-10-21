@@ -16,6 +16,8 @@ function Home(props) {
 
     const [show, setShow] = useState(false);
 
+   
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -25,8 +27,8 @@ function Home(props) {
 
     const features = Object.keys(posts).slice(Object.keys(posts).length - 2, Object.keys(posts).length)
 
-
-
+    
+  
     return (
         posts === "Null" ? (<div className="load"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>) :
             (
@@ -41,21 +43,22 @@ function Home(props) {
                                 <div className="movie_card" id="bright" key={key}>
                                     <div className="info_section">
                                         <div className="movie_header">
-                                            <Link to={"/blog/" + posts[val]._id+"/show"} style={{ textDecoration: "none" }}><img className="locandina" src={baseMedia + posts[val].photo} alt="blog-post" /></Link>
-                                            <Link to={"/blog/" + posts[val]._id+"/show"} style={{ textDecoration: "none" }}><h3>{posts[val].title}</h3></Link>
+                                            <Link to={"/blog/" + posts[val]._id + "/show"} style={{ textDecoration: "none" }}><img className="locandina" src={baseMedia + posts[val].photo} alt="blog-post" /></Link>
+                                            <Link to={"/blog/" + posts[val]._id + "/show"} style={{ textDecoration: "none" }}><h3>{posts[val].title}</h3></Link>
                                             <h5>{'( ' + new Date(posts[val].updatedAt).toLocaleDateString() + ' )'}</h5>
                                             <span className="minutes">{posts[val].desc.split(" ").length === 0 ? 'calculating...' : posts[val].desc.split(" ").length + " words"}</span>
                                             <p className="type">Photo Appreciation</p>
                                         </div>
-                                        <Link to={"/blog/" + posts[val]._id+"/show"} style={{ textDecoration: "none" }}><div className="movie_desc">
+                                        <Link to={"/blog/" + posts[val]._id + "/show"} style={{ textDecoration: "none" }}><div className="movie_desc">
                                             <p className="text">
                                                 {posts[val].desc}
                                             </p>
-                                        </div></Link>
+                                        </div>
+                                        </Link>
                                         <div className="movie_social">
                                             <ul>
                                                 <li><i className="material-icons" onClick={handleShow}>share</i></li>
-                                                <li><i className="material-icons"></i>{' '}<span className="like"><b>{posts[val].likes.length + ' likes'}</b></span></li>
+                                                <li><i style={{color: "red"}} className="material-icons"></i>{' '}<span className="like" style={{color: "#111"}}><b>{posts[val].likes.length + ' likes'}</b></span></li>
                                                 {/*<li><i className="material-icons">chat_bubble</i></li>*/}
                                             </ul>
                                         </div>
@@ -72,6 +75,7 @@ function Home(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
+
                                     </div>
                                     <div className="blur_back" style={{ backgroundImage: `url(${baseMedia + posts[val].photo})` }}></div>
                                 </div>

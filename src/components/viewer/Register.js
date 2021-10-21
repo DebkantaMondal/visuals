@@ -1,7 +1,79 @@
-import React from 'react'
+import axios from 'axios';
+import { useState, useEffect } from 'react'
 import './Register.css';
 
 export default function Register() {
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [rP, setRP] = useState("");
+
+
+    const [usernameMsg, setUsernameMsg] = useState("");
+
+    const [registerMsg, setRegisterMsg] = useState("");
+
+    const [userFlag, setUserFlag] = useState(true);
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [isPassword, setIsPassword] = useState(false);
+
+
+    useEffect(() => {
+        const handleUsernameValidate = async () => {
+            if (username !== "") {
+                await axios.post("https://my-blog-backend-deb.herokuapp.com/api/viewer/authenticate/usernameValidate", { username: username })
+                    .then(res => {
+                        setUsernameMsg(res.data);
+                        if (usernameMsg === "Username already taken") {
+                            setUserFlag(false);
+                        } else {
+                            setIsSubmit(false);
+                            setUserFlag(true);
+                        }
+                    })
+            } else {
+                setUsernameMsg("");
+            }
+
+        }
+        handleUsernameValidate();
+        rP === "" ? setIsPassword(false) : rP === password ? setIsPassword(true) : setIsPassword(false);
+        const handleRegister = async () => {
+
+            if (userFlag) {
+                if (isPassword) {
+                    await axios.post("https://my-blog-backend-deb.herokuapp.com/api/viewer/authenticate/register", { username: username, email: email, password: password })
+                        .then(res => {
+                            if (res) {
+                                setRegisterMsg("R");
+                            } else {
+                                setRegisterMsg("Error in Registration");
+                            }
+                        })
+                        .catch(err => {
+                            setRegisterMsg("Same Email Used Detected. Try with New . Sign Up Error")
+                        })
+                } else {
+                    setRegisterMsg("Password Not Matched");
+                }
+            } else {
+                setRegisterMsg("This Username is already taken For Signup. Try again")
+            }
+
+        }
+        if (isSubmit) {
+            handleRegister();
+        }
+
+    }, [username, userFlag, usernameMsg, isSubmit, isPassword, rP, password, email]);
+
+
+    const register = (e, status) => {
+        e.preventDefault();
+        setIsSubmit(status);
+    }
+
     return (
         <div style={{ marginTop: "4.4rem" }}>
             <div class="form_wrapper">
@@ -11,51 +83,30 @@ export default function Register() {
                     </div>
                     <div class="row clearfix">
                         <div class="">
-                            <form>
+                            <p>{registerMsg === "R" ? (<span style={{ color: "green" }}>You're Successfully Registered.</span>) : (<span style={{ color: "red" }}>{registerMsg}</span>)}</p>
+                            <form onSubmit={(e) => register(e, true)}>
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                    <input type="text" name="username" placeholder="Username" required />
+                                    <input type="text" name="username" value={username} placeholder="Username" onChange={(e) => setUsername(e.target.value)} required />
+                                    <br />
+                                    <p>{usernameMsg === "Username already taken" ? (<span style={{ color: "red" }}>{usernameMsg}</span>) : (<span style={{ color: "green" }}>{usernameMsg}</span>)}</p>
                                 </div>
+
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                                    <input type="email" name="email" placeholder="Email" required />
+                                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
                                 </div>
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                    <input type="password" name="password" placeholder="Password" required />
+                                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
                                 </div>
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                    <input type="password" name="password" placeholder="Re-type Password" required />
+                                    <input type="password" name="password" value={rP} onChange={(e) => setRP(e.target.value)} placeholder="Re-type Password" required />
+                                    <p>{rP === "" ? "" : rP === password ? (<span style={{ color: "green" }}>Matched</span>) : (<span style={{ color: "red" }}>Not Matched</span>)}</p>
                                 </div>
-                                {/*<div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                <input type="text" name="name" placeholder="First Name" />
-              </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                <input type="text" name="name" placeholder="Last Name" required />
-              </div>
-            </div>
-    </div>*/}
-                                {/*<div class="input_field radio_option">
-              <input type="radio" name="radiogroup1" id="rd1">
-              <label for="rd1">Male</label>
-              <input type="radio" name="radiogroup1" id="rd2">
-              <label for="rd2">Female</label>
-              </div>
-              <div class="input_field select_option">
-                <select>
-                  <option>Select a country</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                </select>
-                <div class="select_arrow"></div>
-    </div>*/}
                                 <div class="input_field checkbox_option">
-                                    <input type="checkbox" id="cb1" />
+                                    <input type="checkbox" id="cb1" required />
                                     <label for="cb1">I agree with terms and conditions</label>
                                 </div>
                                 <div class="input_field checkbox_option">
-                                    <input type="checkbox" id="cb2" />
+                                    <input type="checkbox" id="cb2" required />
                                     <label for="cb2">I want to receive the newsletter</label>
                                 </div>
                                 <input class="button" type="submit" value="SIGN UP" />
