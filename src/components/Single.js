@@ -63,9 +63,9 @@ function Single() {
 
     useEffect(() => {
         const axiosSinglePostData = async () => {
-            const response = await axios.get("https://my-blog-backend-deb.herokuapp.com/api/posts/" + id);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_BACKEND_URI}/posts/${id}`);
             setData(response.data);
-            setPic("https://raw.githubusercontent.com/DebkantaMondal/blog-photo/main/" + data.photo);
+            setPic(`${process.env.REACT_APP_IMAGE_STORAGE_BASE_URI}/${data.photo}`);
             setWordDesc(response.data.desc.split(" ").length);
             setWordTitle(response.data.title.split(" ").length);
             setReadTime(((response.data.desc.split(" ").length + response.data.title.split(" ").length) / 250).toFixed(4));

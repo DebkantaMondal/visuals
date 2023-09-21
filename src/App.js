@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   /*BrowserRouter as Router,*/
@@ -31,11 +31,13 @@ function App() {
   const [noOfBlog, setNoOfBlog] = useState(0);
 
 
-  const BaseMedia = "https://raw.githubusercontent.com/DebkantaMondal/blog-photo/main/";
+  const BaseMedia = `${process.env.REACT_APP_IMAGE_STORAGE_BASE_URI}/`;
+
+  
 
   useEffect(() => {
     const axiosPostData = async () => {
-      const response = await axios.get("https://my-blog-backend-deb.herokuapp.com/api/posts");
+      const response = await axios.get(`${process.env.REACT_APP_BASE_BACKEND_URI}/posts`);
       setPostData(response.data);
       setNoOfBlog(response.data.length);
       //console.log(response.data);
